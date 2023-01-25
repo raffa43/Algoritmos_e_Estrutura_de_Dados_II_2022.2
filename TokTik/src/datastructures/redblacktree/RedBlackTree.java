@@ -1,5 +1,14 @@
+package datastructures.redblacktree;
+
 import java.util.ArrayList;
 
+/*
+###############################################################
+    Implementado seguindo os tutoriais disponíveis na em:
+    <https://www.youtube.com/watch?v=bqOSo1f1jbo/>
+    <https://www.youtube.com/watch?v=lU99loSvD8s/>
+###############################################################
+ */
 public class RedBlackTree<T extends Comparable<T>> {
     Node<T> root;
 
@@ -14,7 +23,7 @@ public class RedBlackTree<T extends Comparable<T>> {
         if (node == null){
             return nodeToInsert;
         }
-        if (nodeToInsert.getData().compareTo(node.getData()) < 0){
+        if (nodeToInsert.getData().compareTo(node.getData()) < 0 || nodeToInsert.getData().compareTo(node.getData()) == 0 ){
             node.setLeft(insert(node.getLeft(), nodeToInsert));
             node.getLeft().setParent(node);
         } else if (nodeToInsert.getData().compareTo(node.getData()) > 0) {
@@ -163,6 +172,28 @@ public class RedBlackTree<T extends Comparable<T>> {
         newNode.setRed(false);
     }
 
+    public Node<T> get(T data){
+        if (data.compareTo(root.getData()) == 0){
+            return root;
+        } else if (data.compareTo(root.getData()) > 0) {
+            return root.getRight() != null ? get(data, root.getRight()) : null;
+        } else if (data.compareTo(root.getData()) < 0) {
+            return root.getLeft() != null ? get(data, root.getLeft()) : null;
+        }
+        return null;
+    }
+
+    private Node<T> get(T data, Node<T> node){
+        if (data.compareTo(node.getData()) == 0){
+            return node;
+        } else if (data.compareTo(node.getData()) > 0) {
+            return node.getRight() != null ? get(data, node.getRight()) : null;
+        } else if (data.compareTo(node.getData()) < 0) {
+            return node.getLeft() != null ? get(data, node.getLeft()) : null;
+        }
+        return null;
+    }
+
     public Node<T> getNode(T data) {
         return root.getData().compareTo(data) == 0 ? root  :
                 (data.compareTo(root.getData()) < 0 ? getNode(data, root.getLeft()) : getNode(data, root.getRight()));
@@ -230,7 +261,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 
         return min;
     }
-    
+
     public ArrayList<ArrayList<Node<T>>> getLevels(){
         if (root == null) return null;
 
