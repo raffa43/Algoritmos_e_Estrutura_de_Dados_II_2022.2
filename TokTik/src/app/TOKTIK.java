@@ -1,20 +1,18 @@
 package app;
 
-import datastructures.avltree.AVLTree;
+import datastructures.avltree.*;
 import datastructures.invertedindex.InvertedList;
-import datastructures.redblacktree.Node;
-import datastructures.redblacktree.RedBlackTree;
 
 import java.util.LinkedList;
 public class TOKTIK {
     User loggedUser;
-    RedBlackTree<User> users;
+    AVLTree<User> users;
     InvertedList<Post> posts;
     /*
      * Construtor da classe, inicia as listas
      */
     public TOKTIK() throws Exception {
-        this.users = new RedBlackTree<>();
+        this.users = new AVLTree<>();
         this.posts = new InvertedList<>();
     }
     /*
@@ -22,7 +20,7 @@ public class TOKTIK {
      * Caso, a senha (pwd) esteja correta
      */
     public void logIn(String handle, String pwd){
-        this.loggedUser = users.get(new User(handle)).getData().authenticate(pwd);
+        this.loggedUser = users.getNode(new User(handle)).getData().authenticate(pwd);
         if (loggedUser != null){
             System.out.println("Logged in successfully\nWelcome, " + loggedUser.getHandle());
         }else {
@@ -66,10 +64,9 @@ public class TOKTIK {
      * Método de busca lexigrafica dentro da árvore rubro-negra de User atráves do handle
      */
     public User searchUser(String handle){
-        Node<User> user = users.get(new User(handle));
+        Node<User> user = users.getNode(new User(handle));
         return user != null? user.getData() : null;
     }
-
 
     /*
      * Método de busca de posts atráves do indicie invertido

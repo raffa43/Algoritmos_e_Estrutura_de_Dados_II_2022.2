@@ -142,7 +142,9 @@ public class Main {
 
         app.logIn("Socrates", "456");
         app.makePost("Sábio é aquele que conhece os limites da própria ignorância.");
+        TimeUnit.SECONDS.sleep(1);
         app.makePost("Para conseguir a amizade de uma pessoa digna é preciso desenvolvermos em nós mesmos as qualidades que naquela admiramos.");
+        TimeUnit.SECONDS.sleep(1);
         app.makePost("Só sei que nada sei.");
         app.sendFriendRequest(app.searchUser("Platão"));
         app.sendFriendRequest(app.searchUser("Diógenes"));

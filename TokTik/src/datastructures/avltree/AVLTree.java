@@ -3,6 +3,12 @@ package datastructures.avltree;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*#######################################################################################################
+## Desenvovido com base no video                                                                       ##
+## "AVL Tree Explained and Implemented in Java | AVL Trees Rotations | Self-Balancing Trees | Geekific"## 
+## dísponivel em: <https://youtu.be/Jj9Mit24CWk/>                                                      ##
+#######################################################################################################*/
+
 public class AVLTree<T extends Comparable<T>> {
     Node<T> root;
 
@@ -109,7 +115,15 @@ public class AVLTree<T extends Comparable<T>> {
         return node != null ? node.getHeight() : 0;
     }
 
+    public Node<T> getNode(T data) {
+        return root.getData().compareTo(data) == 0 ? root  :
+                (data.compareTo(root.getData()) < 0 ? getNode(data, root.getLeft()) : getNode(data, root.getRight()));
+    }
 
+    private Node<T> getNode(T data, Node<T> node) {
+        return node.getData().compareTo(data) == 0 ? node  :
+                (data.compareTo(node.getData()) < 0 ? getNode(data, node.getLeft()) : getNode(data, node.getRight()));
+    }
     public void traverse(){
         if(root.getLeft() != null) traverse(root.getLeft());
         System.out.println(root.getData());

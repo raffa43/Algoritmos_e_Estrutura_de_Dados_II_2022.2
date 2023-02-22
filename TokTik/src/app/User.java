@@ -3,8 +3,7 @@ package app;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import datastructures.avltree.AVLTree;
-import datastructures.redblacktree.RedBlackTree;
+import datastructures.avltree.*;
 
 public class User implements Comparable<User> {
     private final Scanner sc = new Scanner(System.in);
@@ -12,7 +11,7 @@ public class User implements Comparable<User> {
     String pwd;
     LinkedList<User> friends;
     LinkedList<FriendRequest> friendRequests;
-    RedBlackTree<Post> posts;
+    AVLTree<Post> posts;
 
     /*
      * Cria uma instância da classe somente com o handle para usar o compareTo
@@ -28,7 +27,7 @@ public class User implements Comparable<User> {
         this.pwd = pwd;
         this.friends = new LinkedList<>();
         this.friendRequests = new LinkedList<>();
-        this.posts = new RedBlackTree<>();
+        this.posts = new AVLTree<>();
     }
     /*
      * Esse construtor seria utilizado para reinstanciação de um usuário, porém eu não implementei persistência
@@ -133,7 +132,7 @@ public class User implements Comparable<User> {
         return friendRequests;
     }
 
-    public RedBlackTree<Post> getPosts() {
+    public AVLTree<Post> getPosts() {
         return posts;
     }
 

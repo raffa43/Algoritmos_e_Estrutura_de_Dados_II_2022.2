@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*#######################################################################################################
+## Desenvovido com base no video                                                                       ##
+## "AVL Tree Explained and Implemented in Java | AVL Trees Rotations | Self-Balancing Trees | Geekific"## 
+## dísponivel em: <https://youtu.be/Jj9Mit24CWk/>                                                      ##
+#######################################################################################################*/
 public class AVLTree<T extends Comparable<T>> {
     Node<T> root;
 

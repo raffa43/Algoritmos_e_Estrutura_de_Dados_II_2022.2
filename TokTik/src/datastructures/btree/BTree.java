@@ -2,6 +2,10 @@ package datastructures.btree;
 
 import java.util.ArrayList;
 
+/*###############################################################################
+## Desenvovido com base na playlist "B-Trees // Michael Sambol" dísponivel em: ##
+## <https://youtube.com/playlist?list=PL9xmBV_5YoZNFPPv98DjTdD9X6UI9KMHz/>     ##
+###############################################################################*/
 public class BTree<T extends Comparable<T>> {
     Node<T> root;
 
